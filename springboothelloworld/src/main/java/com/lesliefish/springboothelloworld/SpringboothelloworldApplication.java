@@ -1,14 +1,13 @@
-package com.lesliefish.demo01;
+package com.lesliefish.springboothelloworld;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Demo01Application {
+public class SpringboothelloworldApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Demo01Application.class, args);
+		SpringApplication.run(SpringboothelloworldApplication.class, args);
 	}
 
 }
-
