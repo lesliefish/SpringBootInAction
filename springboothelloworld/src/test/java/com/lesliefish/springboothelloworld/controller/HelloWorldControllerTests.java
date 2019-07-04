@@ -1,4 +1,4 @@
-package com.lesliefish.springboothelloworld;
+package com.lesliefish.springboothelloworld.controller;
 
 import com.lesliefish.springboothelloworld.controller.HelloWorldController;
 import org.junit.Before;
@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -18,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HelloWorldApplicationTests {
+public class HelloWorldControllerTests {
 
     private MockMvc mockMvc;
 
@@ -30,8 +32,9 @@ public class HelloWorldApplicationTests {
     @Test
     public void getHello() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Hello World")));
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
     }
 
 }
